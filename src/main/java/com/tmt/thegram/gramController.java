@@ -24,7 +24,12 @@ public class gramController {
 
     @PostMapping("/submitForm")
     public String handleSubmit(@Valid User user, BindingResult bindingResult){
+        if (user.getFirstName().equals(user.getLastName())){
+            bindingResult.rejectValue("lastName", "", "Please enter valid data");
+        }
+
         if(bindingResult.hasErrors()) return "sign-up";
+        
         return "redirect:results";
     }
 
