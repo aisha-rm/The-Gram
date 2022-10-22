@@ -21,6 +21,7 @@ public class User {
     
     @NotBlank(message="Username cannot be blank")
     @Size(min=7, message="Username is too short")
+    @Username(message="Username cannot contain special characters  or uppercase characters ")
     private String userName;
     
     @Email(message="Invalid email address")
@@ -28,6 +29,7 @@ public class User {
     
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Past(message="Date must not be in future")
+    @Age(message="Age must be at least 18")
     private Date dateOfBirth;
     
     private String id;
